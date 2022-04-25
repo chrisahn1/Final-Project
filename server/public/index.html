@@ -1,42 +1,297 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Final Project</title>
-  <link rel="icon" href="/favicon.ico">
-  <link rel="stylesheet" href="/reset.css">
-  <link rel="stylesheet" href="/layout.css">
-  <link rel="stylesheet" href="styles.css">
-  <!-- change to href="/styles.css" later -->
-</head>
-<body>
-  <header>
-    <div class="home">
-      <button>Home</button>
-    </div>
-    <form id="search-results-form">
-      <div class="search-input">
-        <div>
-          <input required autofocus type="text" id="search" name="search" size="100">
-        </div>
-        <div>
-          <button class="search-button">SEARCH</button>
-        </div>
-      </div>
-    </form>
-    <div class="user-corner">
-      <div class="signin">
-        <button>Sign In</button>
-      </div>
-      <div class="signup">
-        <button>Sign Up</button>
-      </div>
-    </div>
-  </header>
-  <div id="root">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Final Project</title>
+    <link rel="icon" href="/favicon.ico">
+    <link rel="stylesheet" href="/reset.css">
+    <link rel="stylesheet" href="/layout.css">
+    <link rel="stylesheet" href="/styles.css">
+    <!-- change to href="/styles.css" later -->
+    <style>
+      body {
+        margin: 0;
+        padding-bottom: 3rem;
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      }
 
-  </div>
-  <script src="/main.js"></script>
-</body>
+      .container-messages {
+        background-color: lightblue;
+        justify-content: center;
+        margin-top: 20px;
+        margin-bottom: 50px;
+        margin-left: auto;
+        margin-right: auto;
+        padding: 30px;
+        max-width: 1000px;
+      }
+
+      #form {
+        background: rgba(0, 0, 0, 0.15);
+        padding: 0.25rem;
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        display: flex;
+        height: 3rem;
+        box-sizing: border-box;
+        backdrop-filter: blur(10px);
+      }
+
+      #input {
+        border: none;
+        padding: 0 1rem;
+        flex-grow: 1;
+        border-radius: 2rem;
+        margin: 0.25rem;
+      }
+
+      #input:focus {
+        outline: none;
+      }
+
+      #form > button {
+        background: #333;
+        border: none;
+        padding: 0 1rem;
+        margin: 0.25rem;
+        border-radius: 3px;
+        outline: none;
+        color: #fff;
+      }
+
+      #messages {
+        list-style-type: none;
+        margin: 0;
+        padding: 0;
+      }
+
+      #messages > li {
+        padding: 0.5rem 1rem;
+      }
+
+      #messages > li:nth-child(odd) {
+        background: #efefef;
+      }
+      @import url('https://fonts.googleapis.com/css?family=Roboto&display=swap');
+
+:root {
+  --dark-color-a: #1b4ac3;
+	--dark-color-b: #1791c6;
+	--light-color: #e6e9ff;
+	--success-color: #5cb85c;
+	--error-color: #d9534f;
+}
+
+* {
+	box-sizing: border-box;
+	margin: 0;
+	padding: 0;
+}
+
+body {
+	font-family: 'Roboto', sans-serif;
+	font-size: 16px;
+	background: var(--light-color);
+	margin: 20px;
+}
+
+ul {
+	list-style: none;
+}
+
+a {
+	text-decoration: none;
+}
+
+.btn {
+	cursor: pointer;
+	padding: 5px 15px;
+	background: var(--light-color);
+	color: white;
+	border: 0;
+	font-size: 17px;
+  background-color: #9E78F0;
+  border-radius: 5px;
+}
+
+/* Chat Page */
+
+.chat-container {
+	max-width: 1400px;
+	background: #fff;
+	margin: 30px auto;
+	overflow: hidden;
+}
+
+.chat-header {
+	background: var(--dark-color-a);
+	color: #fff;
+	border-top-left-radius: 5px;
+	border-top-right-radius: 5px;
+	padding: 15px;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+}
+
+.chat-main {
+	display: grid;
+	grid-template-columns: 3fr 1fr;
+  height: 500px;
+}
+.chat-sidebar {
+	background: var(--dark-color-b);
+	color: #fff;
+	padding: 20px 20px 40px;
+	overflow-y: scroll;
+}
+
+.chat-sidebar h2 {
+	font-size: 20px;
+	background: rgba(0, 0, 0, 0.1);
+	padding: 10px;
+	margin-bottom: 20px;
+}
+
+.chat-sidebar h3 {
+	margin-bottom: 15px;
+}
+
+.chat-sidebar ul li {
+	padding: 10px 0;
+}
+
+.chat-messages {
+	padding: 30px;
+	max-height: 500px;
+	overflow-y: scroll;
+}
+
+.chat-messages .message {
+	padding: 10px;
+	margin-bottom: 15px;
+	background-color: var(--light-color);
+	border-radius: 5px;
+	overflow-wrap: break-word;
+}
+
+.chat-messages .message .meta {
+	font-size: 15px;
+	font-weight: bold;
+	color: var(--dark-color-b);
+	opacity: 0.7;
+	margin-bottom: 7px;
+}
+
+.chat-messages .message .meta span {
+	color: #777;
+}
+
+.chat-form-container {
+	padding: 20px 30px;
+	background-color: var(--dark-color-a);
+}
+
+.chat-form-container form {
+	display: flex;
+}
+
+.chat-form-container input[type='text'] {
+	font-size: 16px;
+	padding: 5px;
+	height: 40px;
+	flex: 1;
+}
+    </style>
+  </head>
+  <body>
+    <div class="chat-container">
+      <header class="chat-header">
+        <h1><i class="fas fa-smile"></i>Live Chat</h1>
+        <a id="leave-btn" class="btn">Exit Server</a>
+      </header>
+      <main class="chat-main">
+        <div id="messages" class="chat-messages"></div>
+        <div class="chat-sidebar">
+          <h3><i class="fas fa-comments"></i> Room Name:</h3>
+          <h2 id="room-name"></h2>
+          <h3><i class="fas fa-users"></i> Users</h3>
+          <ul id="users"></ul>
+        </div>
+      </main>
+      <div class="chat-form-container">
+        <form id="chat-form">
+          <input id="input" type="text" placeholder="Enter Message" required autocomplete="off" />
+          <button class="btn">Send</button>
+        </form>
+      </div>
+    </div>
+    <!-- <div class="container-messages">
+      <ul id="messages"></ul>
+      <form id="form" action="">
+        <input id="input" autocomplete="off" /><button>Send</button>
+      </form>
+    </div> -->
+
+
+    <script src="index.js"></script>
+    <script src="/socket.io/socket.io.js"></script>
+    <script>
+      const socket = io();
+
+      const messages = document.getElementById('messages');
+      // const chatMessages = document.querySelector('.chat-messages');
+      const form = document.getElementById('chat-form');
+      const input = document.getElementById('input');
+
+      form.addEventListener('submit', function (e) {
+        e.preventDefault();
+        if (input.value) {
+          socket.emit('chat message', input.value);
+          input.value = '';
+        }
+      });
+
+      // socket.on('chat message', function (msg) {
+      //   const item = document.createElement('li');
+      //   item.textContent = msg;
+      //   messages.appendChild(item);
+      //   window.scrollTo(0, document.body.scrollHeight);
+      // });
+
+      socket.on('chat message', function (msg) {
+        const item = document.createElement('div');
+        item.textContent = msg;
+        messages.appendChild(item);
+        window.scrollTo(0, document.body.scrollHeight);
+        messages.scrollTop = messages.scrollHeight;
+      });
+
+      // socket.on('chat message', message => {
+      //   outputMessage(message);
+
+      //   // Scroll down
+      //   chatMessages.scrollTop = chatMessages.scrollHeight;
+      // });
+
+      // function outputMessage(message) {
+      //   const div = document.createElement('div');
+      //   div.classList.add('message');
+      //   const p = document.createElement('p');
+      //   // p.classList.add('meta');
+      //   // p.innerText = message.username;
+      //   // p.innerHTML += `<span>${message.time}</span>`;
+      //   div.appendChild(p);
+      //   const para = document.createElement('p');
+      //   para.classList.add('text');
+      //   para.innerText = message.text;
+      //   div.appendChild(para);
+      //   document.querySelector('.chat-messages').appendChild(div);
+      // }
+    </script>
+    <!-- <script src="/main.js"></script> -->
+  </body>
 </html>
