@@ -1,0 +1,142 @@
+* {
+  font-family: sans-serif;
+}
+
+/* body {
+  background-image: url("Ruocco-Park-San-Diego.jpg");
+  position: relative;
+} */
+
+/* button {
+  color: white;
+  background-color: #5cc1d7;
+  border-width: 0;
+  padding: 10px 20px;
+  font-size: 18px;
+  border-radius: 5px;
+}
+
+header {
+  background-color: #404e52;
+  display: flex;
+  position: fixed;
+  top: 0;
+  padding-top: 20px;
+  padding-bottom: 10px;
+  align-items: center;
+}
+
+.home {
+  padding-left: 50px;
+  padding-right: 50px;
+}
+
+.user-corner {
+  display: flex;
+}
+
+.signin,
+.signup {
+  margin-left: 10px;
+  margin-right: 10px;
+}
+
+.search-input {
+  display: flex;
+  justify-content: flex-start;
+  max-width: 1000px;
+  margin-left: auto;
+  margin-right: auto;
+  align-items: center;
+  padding: 10px 20px;
+}
+
+input {
+  display: block;
+  width: 100%;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  margin-right: auto;
+}
+
+.search-button {
+  background-color: #827ff6;
+  margin-left: 10px;
+  margin-right: 10px;
+  padding-top: 7px;
+  padding-bottom: 7px;
+}
+
+#map {
+  height: 100%;
+}
+
+html,
+body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+} */
+
+body {
+  margin: 0;
+  padding-bottom: 3rem;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+}
+
+.container-messages {
+  background-color: lightblue;
+  justify-content: center;
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 1000px;
+}
+
+#form {
+  background: rgba(0, 0, 0, 0.15);
+  padding: 0.25rem;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  display: flex;
+  height: 3rem;
+  box-sizing: border-box;
+  backdrop-filter: blur(10px);
+}
+
+#input {
+  border: none;
+  padding: 0 1rem;
+  flex-grow: 1;
+  border-radius: 2rem;
+  margin: 0.25rem;
+}
+
+#input:focus {
+  outline: none;
+}
+
+#form > button {
+  background: #333;
+  border: none;
+  padding: 0 1rem;
+  margin: 0.25rem;
+  border-radius: 3px;
+  outline: none;
+  color: #fff;
+}
+
+#messages {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+#messages > li {
+  padding: 0.5rem 1rem;
+}
+
+#messages > li:nth-child(odd) {
+  background: #efefef;
+}
